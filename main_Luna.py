@@ -192,12 +192,13 @@ def luna_listen_instructions(wake_word_engine):
 
         try:
             instructions = transcribe(os.getcwd() + "\Temp\instructions.wav")
-            print(f"Instrucciones: {instructions}")
+            print(f"\nInstrucciones: {instructions}")
         except Exception as e:
             print(f"Error al transcribir las instrucciones: {e}")
     except Exception as e:
         print(f"Error al obtener las instrucciones: {e}")
     # Reinicia la espera activa del motor de palabras clave
+    time.sleep(0.2)
     main()
 
 
