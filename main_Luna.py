@@ -17,6 +17,7 @@ from Modules.VAD.voice_activity_detection import record_audio
 from Modules.wake_word_engine.neuralnet.dataset import get_featurizer
 from Modules.Transcription.transcription_whisper import transcribe
 from Modules.LLM.logic_engine import LunaChat
+from Modules.Text_To_Speech.speech_generation import speak
 
 # Importar configuraciones necesarias
 from config import *
@@ -203,6 +204,10 @@ def luna_listen_instructions(wake_word_engine):
         except Exception as e:
             print(f"Error al generar la respuesta: {e}")
 
+        try:
+            speak(response)
+        except Exception as e:
+            print(f"Error al sintetizar la voz: {e}")
     except Exception as e:
         print(f"Error al procesar la solicitud: {e}")
     # Reinicia la espera activa del motor de palabras clave

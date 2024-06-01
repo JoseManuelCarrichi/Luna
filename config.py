@@ -11,3 +11,9 @@ RECORD_SECONDS = 2
 # Whisper
 WHISPER_MODEL = 'small'
 LANGUAGE = 'es'
+
+# LLM
+MODEL = "phi3:instruct"
+
+# TTS
+TTS_MODEL =  'tts_models/multilingual/multi-dataset/xtts_v2'
