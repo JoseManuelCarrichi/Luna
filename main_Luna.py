@@ -16,6 +16,7 @@ from playsound import playsound
 from Modules.VAD.voice_activity_detection import record_audio
 from Modules.wake_word_engine.neuralnet.dataset import get_featurizer
 from Modules.Transcription.transcription_whisper import transcribe
+from Modules.LLM.logic_engine import LunaChat
 
 # Importar configuraciones necesarias
 from config import *
@@ -195,8 +196,15 @@ def luna_listen_instructions(wake_word_engine):
             print(f"\nInstrucciones: {instructions}")
         except Exception as e:
             print(f"Error al transcribir las instrucciones: {e}")
+
+        try:
+            response = LunaChat(pregunta=instructions)
+            print(f"Respuesta: {response}")
+        except Exception as e:
+            print(f"Error al generar la respuesta: {e}")
+
     except Exception as e:
-        print(f"Error al obtener las instrucciones: {e}")
+        print(f"Error al procesar la solicitud: {e}")
     # Reinicia la espera activa del motor de palabras clave
     time.sleep(0.2)
     main()
